@@ -2,6 +2,7 @@ import express from "express";
 import { createTable } from "./config/sql.js";
 
 const app = express();
+app.use("/images", express.static("public/images"));
 const init = async () => {
   try {
     await createTable(); //ეს დაელოდება ცხრილს შექმნის  და მერე გაეშვება სერვერი
@@ -10,7 +11,7 @@ const init = async () => {
     console.log(error);
   }
   function startServer() {
-    app.get("/", (req, res) => {
+    app.get("/api/jobs", (req, res) => {
       return res.status(200).json({ message: "works!" });
     }); //პირველი პარამეტრია როუთი(ენდფოინთი) სადაც უნდა გაეშვას ეს რექუსთი და მეორე რა ფუნქცია გეშვას ამ დროს
     // სადაც ვწერთ კოდს რომელიც ამ როუთზე შესვლისას გაეშვება
