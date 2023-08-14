@@ -12,5 +12,7 @@ const pool = new Pool({
 //render-ზე არ არის იმის საშუალებ რომ ქრიეთ თეიბლ და ეგეთები ვაკეთოთ და pgadmin-ში არის ამიტო აქვე უნდა დავწეროთ ცხრილის შექმნის ფუნქცია
 
 export const createTable = async () => {
-  return await pool.query("CREATE TABLE IF NOT EXIST devjob(id SERIAL PRIMARY KEY, title TEXT, price INT )");
+  return await pool.query(
+    "CREATE TABLE IF NOT EXISTS devjob(id SERIAL PRIMARY KEY, title TEXT, price INT )"
+  );
 };
