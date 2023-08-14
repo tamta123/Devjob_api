@@ -2,7 +2,7 @@ import pgk from "pg";
 const { Pool } = pgk; //pool არის ის ქონექშენი რასაც ჩვენი ნოუდი(სერვერი) ქმნის მონაცემთა ბაზასთან
 
 const pool = new Pool({
-  hosta: "dpg-cjcsl4ndb61s739aq2ug-a",
+  host: "dpg-cjcsl4ndb61s739aq2ug-a",
   port: 5432,
   database: "devjob_api",
   user: "devjob_api_user",
@@ -13,6 +13,6 @@ const pool = new Pool({
 
 export const createTable = async () => {
   return await pool.query(
-    "CREATE TABLE IF NOT EXISTS devjob(id SERIAL PRIMARY KEY, title TEXT, price INT )"
+    "CREATE TABLE IF NOT EXISTS jobs(id SERIAL PRIMARY KEY, title TEXT, price INT )"
   );
 };
