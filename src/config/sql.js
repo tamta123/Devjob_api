@@ -13,6 +13,8 @@ const pool = new Pool({
 
 export const createTable = async () => {
   return await pool.query(
-    "CREATE TABLE IF NOT EXISTS jobs(id SERIAL PRIMARY KEY, title TEXT, price INT )"
+    "CREATE TABLE IF NOT EXISTS jobs(id SERIAL PRIMARY KEY, company TEXT, logo_path INT, logo_background_color TEXT, position TEXT, posted_at TEXT,contract TEXT,location TEXT,website TEXT,apply TEXT,description TEXT)"
   );
 };
+
+export default pool;

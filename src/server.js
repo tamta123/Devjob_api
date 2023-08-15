@@ -1,5 +1,5 @@
 import express from "express";
-import { createTable } from "./config/sql.js";
+import pool, { createTable } from "./config/sql.js";
 
 const app = express();
 app.use("/images", express.static("public/images"));
@@ -11,8 +11,14 @@ const init = async () => {
     console.log(error);
   }
   function startServer() {
-    app.get("/api/jobs", (req, res) => {
-      return res.status(200).json({ message: "works!" });
+    app.get("/api/jobs", async (_, response) => {
+      try {
+        const resultQuery = await pool.query("SELECT * FROM JOBS"); // ეს აბრუნებს ობიექტის სახით პასუხს
+        const rows = resultQuery.rows; // rows არის ფროფერთი, რომელიც მასივის სახით ინახავს ცხრილში არსებულ ინფორმაციას
+        return response.status(200).json(rows);
+      } catch (error) {
+        return response.status(401).json(error);
+      } // აქ გვინდა რომ წამოიღოს ბაზიდან და გამოგვიტანოს
     }); //პირველი პარამეტრია როუთი(ენდფოინთი) სადაც უნდა გაეშვას ეს რექუსთი და მეორე რა ფუნქცია გეშვას ამ დროს
     // სადაც ვწერთ კოდს რომელიც ამ როუთზე შესვლისას გაეშვება
     app.listen(3000);
