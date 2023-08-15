@@ -49,41 +49,44 @@ export const createTable = async () => {
       ");"
   );
 
-  // Populate tables with data
-  for (const jobData of jobsData) {
-    // Insert job data into the "jobs" table and retrieve the inserted job's ID
-    const { rows } = await pool.query(
-      "INSERT INTO jobs(company, logo, logo_background_color, position, posted_at, contract, location, website, apply, description) " +
-        "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;",
-      [
-        jobData.company,
-        jobData.logo,
-        jobData.logoBackground,
-        jobData.position,
-        jobData.postedAt,
-        jobData.contract,
-        jobData.location,
-        jobData.website,
-        jobData.apply,
-        jobData.description,
-      ]
-    );
+  const devJob = await pool.query("SELECT * FROM jobs;");
+  console.log(devJob.rows);
 
-    // Extract the inserted job's ID from the query result
-    const jobId = rows[0].id;
+  // // Populate tables with data
+  // for (const jobData of jobsData) {
+  //   // Insert job data into the "jobs" table and retrieve the inserted job's ID
+  //   const { rows } = await pool.query(
+  //     "INSERT INTO jobs(company, logo, logo_background_color, position, posted_at, contract, location, website, apply, description) " +
+  //       "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;",
+  //     [
+  //       jobData.company,
+  //       jobData.logo,
+  //       jobData.logoBackground,
+  //       jobData.position,
+  //       jobData.postedAt,
+  //       jobData.contract,
+  //       jobData.location,
+  //       jobData.website,
+  //       jobData.apply,
+  //       jobData.description,
+  //     ]
+  //   );
 
-    // Insert requirements data into the "requirements" table using the job's ID
-    await pool.query(
-      "INSERT INTO requirements(job_id, content) VALUES ($1, $2);",
-      [jobId, jobData.requirements.content]
-    );
+  //   // Extract the inserted job's ID from the query result
+  //   const jobId = rows[0].id;
 
-    // Insert roles data into the "roles" table using the job's ID
-    await pool.query("INSERT INTO roles(job_id, content) VALUES ($1, $2);", [
-      jobId,
-      jobData.role.content,
-    ]);
-  }
+  //   // Insert requirements data into the "requirements" table using the job's ID
+  //   await pool.query(
+  //     "INSERT INTO requirements(job_id, content) VALUES ($1, $2);",
+  //     [jobId, jobData.requirements.content]
+  //   );
+
+  //   // Insert roles data into the "roles" table using the job's ID
+  //   await pool.query("INSERT INTO roles(job_id, content) VALUES ($1, $2);", [
+  //     jobId,
+  //     jobData.role.content,
+  //   ]);
+  // }
 };
 
 export default pool;
