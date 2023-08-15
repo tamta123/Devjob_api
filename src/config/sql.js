@@ -3,11 +3,11 @@ const { Pool } = pgk; //pool არის ის ქონექშენი რ
 import fs from "fs/promises"; // Import the 'fs' module to read the JSON file. By using the fs module, you can read external data from files, which is helpful when you want to separate your data from your code or work with data that is dynamically generated or provided from an external source.
 
 const pool = new Pool({
-  host: "dpg-cjdlodrbq8nc73a54mlg-a",
-  port: 5432,
-  database: "devjob_api_5ybu",
-  user: "devjob_api_5ybu_user",
-  password: "ONPr3WGaGyEwFp07CqHzUJgUzY8Zlakq",
+  host: "containers-us-west-152.railway.app",
+  port: 6307,
+  database: "railway",
+  user: "postgres",
+  password: "oggoh6byJli8HW6iSKSw",
 }); // ქარლი ბრეისში გადაეცევა ფროფრთები
 //სიქუალაიზერი ვნახო რა არის
 //render-ზე არ არის იმის საშუალებ რომ ქრიეთ თეიბლ და ეგეთები ვაკეთოთ და pgadmin-ში არის ამიტო აქვე უნდა დავწეროთ ცხრილის შექმნის ფუნქცია
