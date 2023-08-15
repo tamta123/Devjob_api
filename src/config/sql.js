@@ -13,7 +13,7 @@ const pool = new Pool({
 //render-ზე არ არის იმის საშუალებ რომ ქრიეთ თეიბლ და ეგეთები ვაკეთოთ და pgadmin-ში არის ამიტო აქვე უნდა დავწეროთ ცხრილის შექმნის ფუნქცია
 
 export const createTable = async () => {
-  const jsonData = await fs.readFile("jobsData.json", "utf-8");
+  const jsonData = await fs.readFile("data.json", "utf-8");
   const jobsData = JSON.parse(jsonData); //This function parses a JSON string and returns a JavaScript object.
   await pool.query(
     "CREATE TABLE IF NOT EXISTS jobs(" +
