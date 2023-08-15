@@ -33,7 +33,7 @@
   {
     "id": 2,
     "company": "Blogr",
-    "logo": "./assets/logos/blogr.svg",
+    "logo": "https://devjob-api-9bhh.onrender.com/images/blogr.svg",
     "logoBackground": "hsl(12, 79%, 52%)",
     "position": "Haskell and PureScript Dev",
     "postedAt": "20h ago",
@@ -387,7 +387,7 @@
   {
     "id": 13,
     "company": "Crowdfund",
-    "logo": "./assets/logos/crowdfund.svg",
+    "logo": "https://devjob-api-9bhh.onrender.com/images/crowdfund.svg",
     "logoBackground": "hsl(157, 57%, 50%)",
     "position": "Front-end Developer",
     "postedAt": "1mo ago",
@@ -419,7 +419,7 @@
   {
     "id": 14,
     "company": "Coffeeroasters",
-    "logo": "./assets/logos/coffeeroasters.svg",
+    "logo": "https://devjob-api-9bhh.onrender.com/images/coffeeroasters.svg",
     "logoBackground": "hsl(29, 60%, 87%)",
     "position": "Junior Full-Stack Developer",
     "postedAt": "1mo ago",

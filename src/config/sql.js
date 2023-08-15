@@ -3,11 +3,11 @@ const { Pool } = pgk; //pool არის ის ქონექშენი რ
 import fs from "fs/promises"; // Import the 'fs' module to read the JSON file. By using the fs module, you can read external data from files, which is helpful when you want to separate your data from your code or work with data that is dynamically generated or provided from an external source.
 
 const pool = new Pool({
-  host: "dpg-cjdk35gq339s73b5f5bg-a",
+  host: "dpg-cjdlodrbq8nc73a54mlg-a",
   port: 5432,
-  database: "devjob_api_eypy",
-  user: "devjob_api_eypy_user",
-  password: "fURsH78YM27G5Jhj2sYoQ809dprFpRAo",
+  database: "devjob_api_5ybu",
+  user: "devjob_api_5ybu_user",
+  password: "ONPr3WGaGyEwFp07CqHzUJgUzY8Zlakq",
 }); // ქარლი ბრეისში გადაეცევა ფროფრთები
 //სიქუალაიზერი ვნახო რა არის
 //render-ზე არ არის იმის საშუალებ რომ ქრიეთ თეიბლ და ეგეთები ვაკეთოთ და pgadmin-ში არის ამიტო აქვე უნდა დავწეროთ ცხრილის შექმნის ფუნქცია
@@ -52,7 +52,7 @@ export const createTable = async () => {
   // const devJob = await pool.query(
   //   "SELECT column_name FROM information_schema.columns WHERE table_name = 'jobs';"
   // );
-  // console.log(devJob.rows);
+  // console.log(devJob.rows); ამით რენდერის კონსოლში შევამოწმეთ რომელ ქოლამნებს ხედავდა ჯობს თეიბლისთვის
 
   // Populate tables with data
   for (const jobData of jobsData) {
