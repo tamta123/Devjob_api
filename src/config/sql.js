@@ -49,7 +49,9 @@ export const createTable = async () => {
       ");"
   );
 
-  const devJob = await pool.query("SELECT * FROM jobs;");
+  const devJob = await pool.query(
+    "SELECT column_name FROM information_schema.columns WHERE table_name = 'jobs';"
+  );
   console.log(devJob.rows);
 
   // // Populate tables with data
