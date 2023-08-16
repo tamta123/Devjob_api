@@ -1,13 +1,14 @@
 import pgk from "pg";
 const { Pool } = pgk; //pool არის ის ქონექშენი რასაც ჩვენი ნოუდი(სერვერი) ქმნის მონაცემთა ბაზასთან
 import fs from "fs/promises"; // Import the 'fs' module to read the JSON file. By using the fs module, you can read external data from files, which is helpful when you want to separate your data from your code or work with data that is dynamically generated or provided from an external source.
+import dotenv from "dotenv"; // Import dotenv
 
 const pool = new Pool({
-  host: "containers-us-west-152.railway.app",
-  port: 6307,
-  database: "railway",
-  user: "postgres",
-  password: "oggoh6byJli8HW6iSKSw",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
 }); // ქარლი ბრეისში გადაეცევა ფროფრთები
 //სიქუალაიზერი ვნახო რა არის
 //render-ზე არ არის იმის საშუალებ რომ ქრიეთ თეიბლ და ეგეთები ვაკეთოთ და pgadmin-ში არის ამიტო აქვე უნდა დავწეროთ ცხრილის შექმნის ფუნქცია
