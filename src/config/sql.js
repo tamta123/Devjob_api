@@ -4,11 +4,11 @@ import fs from "fs/promises"; // Import the 'fs' module to read the JSON file. B
 import dotenv from "dotenv"; // Import dotenv
 
 const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  host: "containers-us-west-152.railway.app",
+  port: 6307,
+  database: "railway",
+  user: "postgres",
+  password: "oggoh6byJli8HW6iSKSw",
 }); // ქარლი ბრეისში გადაეცევა ფროფრთები
 //სიქუალაიზერი ვნახო რა არის
 //render-ზე არ არის იმის საშუალებ რომ ქრიეთ თეიბლ და ეგეთები ვაკეთოთ და pgadmin-ში არის ამიტო აქვე უნდა დავწეროთ ცხრილის შექმნის ფუნქცია
