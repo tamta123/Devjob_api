@@ -1,8 +1,6 @@
 import pgk from "pg";
 const { Pool } = pgk; //pool არის ის ქონექშენი რასაც ჩვენი ნოუდი(სერვერი) ქმნის მონაცემთა ბაზასთან
 import fs from "fs/promises"; // Import the 'fs' module to read the JSON file. By using the fs module, you can read external data from files, which is helpful when you want to separate your data from your code or work with data that is dynamically generated or provided from an external source.
-import dotenv from "dotenv"; // Import dotenv
-dotenv.config();
 
 const pool = new Pool({
   host: process.env.DB_HOST,
@@ -43,9 +41,24 @@ export const createTable = async () => {
       ");"
   );
 
+  await pool.query(
+    "CREATE TABLE IF NOT EXISTS requirement_items(" +
+      "id SERIAL PRIMARY KEY, " +
+      "job_id INT REFERENCES jobs(id), " +
+      "content TEXT" +
+      ");"
+  );
   // Create "roles" table
   await pool.query(
     "CREATE TABLE IF NOT EXISTS roles(" +
+      "id SERIAL PRIMARY KEY, " +
+      "job_id INT REFERENCES jobs(id), " +
+      "content TEXT" +
+      ");"
+  );
+
+  await pool.query(
+    "CREATE TABLE IF NOT EXISTS role_items(" +
       "id SERIAL PRIMARY KEY, " +
       "job_id INT REFERENCES jobs(id), " +
       "content TEXT" +
@@ -86,11 +99,25 @@ export const createTable = async () => {
       [jobId, jobData.requirements.content]
     );
 
+    for (const requirementItem of jobData.requirements.items) {
+      await pool.query(
+        "INSERT INTO requirement_items(job_id, content) VALUES ($1, $2);",
+        [jobId, requirementItem]
+      );
+    }
+
     // Insert roles data into the "roles" table using the job's ID
     await pool.query("INSERT INTO roles(job_id, content) VALUES ($1, $2);", [
       jobId,
       jobData.role.content,
     ]);
+
+    for (const roleItem of jobData.role.items) {
+      await pool.query(
+        "INSERT INTO role_items(job_id, content) VALUES ($1, $2);",
+        [jobId, roleItem]
+      );
+    }
   }
 };
 
