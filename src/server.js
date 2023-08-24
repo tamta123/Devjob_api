@@ -2,6 +2,7 @@ import express from "express";
 import pool, { createTable } from "./config/sql.js";
 import bodyParser from "body-parser";
 import dotenv from "dotenv"; // Import dotenv
+
 dotenv.config();
 
 const app = express();

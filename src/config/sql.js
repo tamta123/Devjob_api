@@ -1,6 +1,9 @@
 import pgk from "pg";
 const { Pool } = pgk; //pool არის ის ქონექშენი რასაც ჩვენი ნოუდი(სერვერი) ქმნის მონაცემთა ბაზასთან
 import fs from "fs/promises"; // Import the 'fs' module to read the JSON file. By using the fs module, you can read external data from files, which is helpful when you want to separate your data from your code or work with data that is dynamically generated or provided from an external source.
+import dotenv from "dotenv"; // Import dotenv
+
+dotenv.config();
 
 const pool = new Pool({
   host: process.env.DB_HOST,
